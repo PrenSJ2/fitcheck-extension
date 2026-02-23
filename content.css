@@ -1,0 +1,102 @@
+/* FitCheck Content Styles */
+/* Injected into product pages */
+
+#fitcheck-recommendation {
+  margin: 20px 0;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.fitcheck-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  color: white;
+  max-width: 400px;
+  animation: slideInDown 0.4s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fitcheck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fitcheck-logo {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.fitcheck-confidence {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fitcheck-size {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+.fitcheck-label {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.fitcheck-size-value {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.fitcheck-warnings {
+  margin-bottom: 12px;
+}
+
+.fitcheck-warning {
+  background: rgba(255, 235, 59, 0.2);
+  border-left: 3px solid #fbc02d;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.fitcheck-footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fitcheck-card {
+    max-width: 100%;
+  }
+  
+  .fitcheck-size-value {
+    font-size: 20px;
+  }
+}

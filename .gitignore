@@ -1,0 +1,31 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+test-results/
+screenshots/
+
+# Build (if we add a build step later)
+dist/
+build/
+*.zip
+
+# Sensitive data (just in case)
+secrets.json
+.env
+
+# Chrome extension packaged files
+*.crx
+*.pem

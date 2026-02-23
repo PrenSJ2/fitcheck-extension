@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitCheck</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 360px;
+      min-height: 500px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .header p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .unit {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: #999;
+      pointer-events: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      text-align: center;
+      display: none;
+    }
+
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      display: block;
+    }
+
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 16px;
+      color: white;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .measurements-saved {
+      display: none;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .measurements-saved h2 {
+      color: #667eea;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .measurements-saved p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .measurement-display {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .measurement-display div {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+
+    .measurement-display strong {
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>👕 FitCheck</h1>
+      <p>Open-source size finder • Privacy-first</p>
+    </div>
+
+    <div class="card">
+      <div id="inputForm">
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="gender">
+            <option value="female">Women's</option>
+            <option value="male">Men's</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Bust / Chest (cm)</label>
+          <div class="input-wrapper">
+            <input type="number" id="bust" placeholder="e.g. 86" min="50" max="150" step="0.5">
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Waist (cm)</label>
+          <div class="input-wrapper">
+            <input type="number" id="waist" placeholder="e.g. 68" min="40" max="150" step="0.5">
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Hips (cm)</label>
+          <div class="input-wrapper">
+            <input type="number" id="hips" placeholder="e.g. 92" min="50" max="150" step="0.5">
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Height (cm)</label>
+          <div class="input-wrapper">
+            <input type="number" id="height" placeholder="e.g. 165" min="140" max="220" step="1">
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <button class="btn" id="saveBtn">Save Measurements</button>
+
+        <div class="status" id="status"></div>
+      </div>
+
+      <div id="savedView" class="measurements-saved">
+        <h2>✓ Measurements Saved</h2>
+        <p>Browse ASOS, Zara, or Boohoo and we'll recommend your size!</p>
+        
+        <div class="measurement-display" id="displayMeasurements"></div>
+
+        <button class="btn" id="editBtn">Edit Measurements</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>🔒 Your data stays private • Stored locally on your device</p>
+      <p><a href="https://github.com/yourusername/fitcheck-extension" target="_blank">Open Source on GitHub</a></p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
