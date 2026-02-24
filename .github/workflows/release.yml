@@ -1,0 +1,163 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+
+# Cancel previous runs if new push occurs
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for version numbering
+
+      - name: Get version from manifest
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Extension version: $VERSION"
+
+      - name: Package extension
+        run: |
+          # Create a clean build directory
+          mkdir -p dist
+          
+          # Copy extension files (exclude dev/docs files)
+          rsync -av \
+            --exclude='dist' \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='docs' \
+            --exclude='node_modules' \
+            --exclude='*.md' \
+            --exclude='*.log' \
+            --exclude='.gitignore' \
+            . dist/fitcheck-extension/
+          
+          # Create ZIP for Chrome Web Store
+          cd dist
+          zip -r fitcheck-extension-v${{ steps.get_version.outputs.version }}.zip fitcheck-extension/
+          
+          # Verify the ZIP was created
+          ls -lh fitcheck-extension-v${{ steps.get_version.outputs.version }}.zip
+
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          NOTES_FILE="release_notes.md"
+          
+          cat > $NOTES_FILE << EOF
+          # FitCheck v${VERSION}
+          
+          ## 🎉 What's New
+          
+          Privacy-first Chrome extension for smart clothing size recommendations.
+          
+          ## 📦 Installation
+          
+          ### Option 1: Chrome Web Store (Recommended)
+          Coming soon! For now, use manual installation.
+          
+          ### Option 2: Manual Installation (Developer Mode)
+          
+          1. Download \`fitcheck-extension-v${VERSION}.zip\` below
+          2. Extract the ZIP file
+          3. Open Chrome and go to \`chrome://extensions/\`
+          4. Enable "Developer mode" (top right toggle)
+          5. Click "Load unpacked"
+          6. Select the extracted \`fitcheck-extension\` folder
+          7. Click the FitCheck icon and enter your measurements
+          8. Visit ASOS, Zara, or Boohoo to see it in action!
+          
+          ## ✨ Features
+          
+          - 🎯 Smart size recommendations with confidence scores
+          - 🔒 100% private - measurements stored locally only
+          - ⚡ Works instantly on product pages
+          - ⚠️ Fit warnings (tight/loose alerts)
+          - 🌍 Supports: ASOS, Zara, Boohoo, PrettyLittleThing, H&M
+          - 💰 Free forever & open source
+          
+          ## 📋 Changelog
+          
+          See [CHANGELOG.md](https://github.com/PrenSJ2/fitcheck-extension/blob/master/CHANGELOG.md) for full details.
+          
+          ## 🐛 Known Issues
+          
+          - Chrome Web Store submission pending
+          - Some size guides may not parse correctly (please report!)
+          
+          ## 📖 Documentation
+          
+          - [README](https://github.com/PrenSJ2/fitcheck-extension#readme)
+          - [Installation Guide](https://github.com/PrenSJ2/fitcheck-extension/blob/master/INSTALL.md)
+          - [Contributing](https://github.com/PrenSJ2/fitcheck-extension/blob/master/CONTRIBUTING.md)
+          
+          ## 🌐 Links
+          
+          - 🌟 [Landing Page](https://prensj2.github.io/fitcheck-extension/)
+          - 💬 [Report Issues](https://github.com/PrenSJ2/fitcheck-extension/issues)
+          - 🤝 [Contribute](https://github.com/PrenSJ2/fitcheck-extension/blob/master/CONTRIBUTING.md)
+          
+          ---
+          
+          **Privacy Guarantee:** Your measurements never leave your device. No cloud, no tracking, no analytics.
+          EOF
+          
+          echo "notes_file=$NOTES_FILE" >> $GITHUB_OUTPUT
+
+      - name: Check if release exists
+        id: check_release
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          if gh release view "v$VERSION" &>/dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release v$VERSION already exists, will update it"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Creating new release v$VERSION"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Delete existing release if exists
+        if: steps.check_release.outputs.exists == 'true'
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          gh release delete "v$VERSION" -y || true
+          git push --delete origin "v$VERSION" || true
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: FitCheck v${{ steps.get_version.outputs.version }}
+          body_path: release_notes.md
+          files: |
+            dist/fitcheck-extension-v${{ steps.get_version.outputs.version }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update README with download link
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          echo "✅ Release created: https://github.com/PrenSJ2/fitcheck-extension/releases/tag/v$VERSION"
+          echo "📦 Download: https://github.com/PrenSJ2/fitcheck-extension/releases/download/v$VERSION/fitcheck-extension-v$VERSION.zip"

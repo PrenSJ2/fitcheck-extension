@@ -1,10 +1,11 @@
 # 👕 FitCheck - Smart Size Finder
 
 [![GitHub stars](https://img.shields.io/github/stars/PrenSJ2/fitcheck-extension?style=social)](https://github.com/PrenSJ2/fitcheck-extension/stargazers)
+[![Latest Release](https://img.shields.io/github/v/release/PrenSJ2/fitcheck-extension)](https://github.com/PrenSJ2/fitcheck-extension/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**🌐 [Visit Landing Page](https://prensj2.github.io/fitcheck-extension/) | 📦 [Chrome Web Store](#) (coming soon)**
+**🌐 [Visit Landing Page](https://prensj2.github.io/fitcheck-extension/) | 📦 [Download Latest](https://github.com/PrenSJ2/fitcheck-extension/releases/latest) | 🏪 [Chrome Web Store](#) (coming soon)**
 
 **Open-source Chrome extension that recommends your clothing size across different brands.**
 
