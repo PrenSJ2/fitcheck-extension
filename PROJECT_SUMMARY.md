@@ -159,7 +159,7 @@ Optional revenue streams:
 
 ## 📚 Resources
 
-- GitHub: https://github.com/yourusername/fitcheck-extension
+- GitHub: https://github.com/PrenSJ2/fitcheck-extension
 - Docs: See README.md
 - Contributing: See CONTRIBUTING.md
 - Testing: See TESTING.md

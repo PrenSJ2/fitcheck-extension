@@ -23,7 +23,7 @@ Stop wasting money on returns and shipping. FitCheck analyzes size guides on fas
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/fitcheck-extension.git
+   git clone https://github.com/PrenSJ2/fitcheck-extension.git
    cd fitcheck-extension
    ```
 
@@ -95,7 +95,7 @@ Buy the right size the first time!
 | Boohoo | ✅ Working | Full support |
 | PrettyLittleThing | ✅ Working | Full support |
 | H&M | ✅ Working | Full support |
-| More coming soon | 🔜 | [Request a site](https://github.com/yourusername/fitcheck-extension/issues) |
+| More coming soon | 🔜 | [Request a site](https://github.com/PrenSJ2/fitcheck-extension/issues) |
 
 ---
 
@@ -124,8 +124,8 @@ We welcome contributions! Here's how:
 
 ### Other Ways to Contribute
 
-- 🐛 [Report bugs](https://github.com/yourusername/fitcheck-extension/issues)
-- 💡 [Suggest features](https://github.com/yourusername/fitcheck-extension/issues)
+- 🐛 [Report bugs](https://github.com/PrenSJ2/fitcheck-extension/issues)
+- 💡 [Suggest features](https://github.com/PrenSJ2/fitcheck-extension/issues)
 - 📖 Improve documentation
 - 🌍 Add translations (coming soon)
 - ⭐ Star the repo if you find it useful!
@@ -203,7 +203,7 @@ A: Because online shopping returns are wasteful for everyone. Plus, we believe p
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/fitcheck-extension.git
+git clone https://github.com/PrenSJ2/fitcheck-extension.git
 cd fitcheck-extension
 
 # Load in Chrome (no build step needed!)
@@ -272,7 +272,7 @@ Every return you avoid saves money, time, and the planet! 🌍
 
 ## 📞 Contact
 
-- GitHub Issues: [Report bugs or request features](https://github.com/yourusername/fitcheck-extension/issues)
+- GitHub Issues: [Report bugs or request features](https://github.com/PrenSJ2/fitcheck-extension/issues)
 - Twitter: [@yourhandle](https://twitter.com/yourhandle)
 - Email: your.email@example.com
 

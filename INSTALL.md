@@ -20,7 +20,7 @@
 
 1. **Download or Clone**
    ```bash
-   git clone https://github.com/yourusername/fitcheck-extension.git
+   git clone https://github.com/PrenSJ2/fitcheck-extension.git
    cd fitcheck-extension
    ```
 
@@ -117,8 +117,8 @@ Your measurements are stored locally and will be deleted.
 ## Getting Help
 
 - 📖 Read the [README](README.md)
-- 🐛 Check [existing issues](https://github.com/yourusername/fitcheck-extension/issues)
-- 💬 Open a [new issue](https://github.com/yourusername/fitcheck-extension/issues/new)
+- 🐛 Check [existing issues](https://github.com/PrenSJ2/fitcheck-extension/issues)
+- 💬 Open a [new issue](https://github.com/PrenSJ2/fitcheck-extension/issues/new)
 - 📧 Email: support@fitcheck.app (coming soon)
 
 ---

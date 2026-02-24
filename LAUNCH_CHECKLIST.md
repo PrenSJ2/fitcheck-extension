@@ -42,7 +42,7 @@
 
 ### Repository
 - [ ] Create public GitHub repository
-- [ ] Push code: `git remote add origin https://github.com/yourusername/fitcheck-extension.git`
+- [ ] Push code: `git remote add origin https://github.com/PrenSJ2/fitcheck-extension.git`
 - [ ] Push: `git push -u origin main`
 - [ ] Add topics/tags: chrome-extension, privacy, open-source, fashion, shopping
 - [ ] Add description: "Open-source size recommendation extension for online shopping"

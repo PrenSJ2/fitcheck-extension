@@ -7,7 +7,7 @@ Thank you for your interest in contributing! 🎉
 1. **Fork the repository**
 2. **Clone your fork:**
    ```bash
-   git clone https://github.com/yourusername/fitcheck-extension.git
+   git clone https://github.com/PrenSJ2/fitcheck-extension.git
    cd fitcheck-extension
    ```
 3. **Load the extension in Chrome:**
@@ -91,7 +91,7 @@ Include in your PR description:
 
 ## 🐛 Reporting Bugs
 
-Found a bug? Please [open an issue](https://github.com/yourusername/fitcheck-extension/issues/new) with:
+Found a bug? Please [open an issue](https://github.com/PrenSJ2/fitcheck-extension/issues/new) with:
 
 ### Required Information
 - **Browser:** Chrome version number
@@ -112,7 +112,7 @@ Found a bug? Please [open an issue](https://github.com/yourusername/fitcheck-ext
 
 ## 💡 Suggesting Features
 
-Have an idea? [Open an issue](https://github.com/yourusername/fitcheck-extension/issues/new) with:
+Have an idea? [Open an issue](https://github.com/PrenSJ2/fitcheck-extension/issues/new) with:
 
 - **Feature description:** What should it do?
 - **Use case:** Why is this useful?
@@ -233,7 +233,7 @@ Every contribution makes online shopping better for everyone. Whether it's:
 
 ## 💬 Questions?
 
-Not sure about something? Open a [discussion](https://github.com/yourusername/fitcheck-extension/discussions) or comment on an issue. We're friendly! 🙂
+Not sure about something? Open a [discussion](https://github.com/PrenSJ2/fitcheck-extension/discussions) or comment on an issue. We're friendly! 🙂
 
 ---
 

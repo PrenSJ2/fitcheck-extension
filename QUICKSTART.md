@@ -32,7 +32,7 @@
 
 ```bash
 # 1. Clone
-git clone https://github.com/yourusername/fitcheck-extension.git
+git clone https://github.com/PrenSJ2/fitcheck-extension.git
 cd fitcheck-extension
 
 # 2. Load in Chrome
@@ -63,9 +63,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full guide.
 ## Need Help?
 
 - 📖 [Full README](README.md)
-- 🐛 [Report Bug](https://github.com/yourusername/fitcheck-extension/issues/new?template=bug_report.md)
-- 💡 [Request Feature](https://github.com/yourusername/fitcheck-extension/issues/new?template=feature_request.md)
-- 🌍 [Request Site](https://github.com/yourusername/fitcheck-extension/issues/new?template=new_site_request.md)
+- 🐛 [Report Bug](https://github.com/PrenSJ2/fitcheck-extension/issues/new?template=bug_report.md)
+- 💡 [Request Feature](https://github.com/PrenSJ2/fitcheck-extension/issues/new?template=feature_request.md)
+- 🌍 [Request Site](https://github.com/PrenSJ2/fitcheck-extension/issues/new?template=new_site_request.md)
 
 ---
 
