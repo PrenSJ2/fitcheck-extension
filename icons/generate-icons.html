@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FitCheck Icon Generator</title>
+</head>
+<body>
+  <canvas id="canvas16" width="16" height="16"></canvas>
+  <canvas id="canvas48" width="48" height="48"></canvas>
+  <canvas id="canvas128" width="128" height="128"></canvas>
+  
+  <script>
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      
+      // Gradient background
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      
+      // White ruler icon
+      ctx.strokeStyle = '#ffffff';
+      ctx.fillStyle = '#ffffff';
+      ctx.lineWidth = size / 32;
+      
+      const centerX = size / 2;
+      const centerY = size / 2;
+      const length = size * 0.6;
+      
+      // Vertical ruler
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY - length/2);
+      ctx.lineTo(centerX, centerY + length/2);
+      ctx.stroke();
+      
+      // Tick marks
+      for (let i = 0; i < 5; i++) {
+        const y = centerY - length/2 + (i * length/4);
+        const tickLength = i % 2 === 0 ? size/8 : size/12;
+        ctx.beginPath();
+        ctx.moveTo(centerX - tickLength/2, y);
+        ctx.lineTo(centerX + tickLength/2, y);
+        ctx.stroke();
+      }
+      
+      return canvas.toDataURL('image/png');
+    }
+    
+    const icon16 = drawIcon(document.getElementById('canvas16'), 16);
+    const icon48 = drawIcon(document.getElementById('canvas48'), 48);
+    const icon128 = drawIcon(document.getElementById('canvas128'), 128);
+    
+    console.log('Icons generated. Download manually from canvas elements.');
+  </script>
+</body>
+</html>
