@@ -1,5 +1,11 @@
 # 👕 FitCheck - Smart Size Finder
 
+[![GitHub stars](https://img.shields.io/github/stars/PrenSJ2/fitcheck-extension?style=social)](https://github.com/PrenSJ2/fitcheck-extension/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**🌐 [Visit Landing Page](https://prensj2.github.io/fitcheck-extension/) | 📦 [Chrome Web Store](#) (coming soon)**
+
 **Open-source Chrome extension that recommends your clothing size across different brands.**
 
 Stop wasting money on returns and shipping. FitCheck analyzes size guides on fashion websites and tells you exactly what size to buy based on your measurements.
