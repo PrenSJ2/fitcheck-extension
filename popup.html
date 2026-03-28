@@ -59,6 +59,28 @@
       margin-bottom: 6px;
     }
 
+    .form-group label .optional {
+      font-weight: 400;
+      color: #999;
+      font-size: 11px;
+    }
+
+    .form-group input.estimated {
+      background-color: #f8f9fa;
+      border-style: dashed;
+    }
+
+    .estimate-badge {
+      display: inline-block;
+      background: #e9ecef;
+      color: #6c757d;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 4px;
+      font-weight: 500;
+    }
+
     .input-wrapper {
       position: relative;
     }
@@ -182,6 +204,54 @@
     .measurement-display strong {
       color: #667eea;
     }
+
+    .unit-toggle {
+      display: flex;
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 16px;
+    }
+
+    .unit-toggle button {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #666;
+    }
+
+    .unit-toggle button.active {
+      background: white;
+      color: #667eea;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .unit-toggle button:hover:not(.active) {
+      color: #333;
+    }
+
+    .height-imperial {
+      display: none;
+    }
+
+    .height-imperial .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .height-imperial .input-row .input-wrapper {
+      flex: 1;
+    }
+
+    .height-imperial .input-row input {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -202,34 +272,72 @@
         </div>
 
         <div class="form-group">
-          <label>Bust / Chest (cm)</label>
+          <label>Measurement Unit</label>
+          <div class="unit-toggle">
+            <button type="button" id="unitCm" class="active">Centimeters (cm)</button>
+            <button type="button" id="unitIn">Inches (in)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label id="bustLabel">Bust / Chest</label>
           <div class="input-wrapper">
             <input type="number" id="bust" placeholder="e.g. 86" min="50" max="150" step="0.5">
-            <span class="unit">cm</span>
+            <span class="unit" id="bustUnit">cm</span>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Waist (cm)</label>
+          <label id="waistLabel">Waist</label>
           <div class="input-wrapper">
             <input type="number" id="waist" placeholder="e.g. 68" min="40" max="150" step="0.5">
-            <span class="unit">cm</span>
+            <span class="unit" id="waistUnit">cm</span>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Hips (cm)</label>
+          <label id="hipsLabel">Hips</label>
           <div class="input-wrapper">
             <input type="number" id="hips" placeholder="e.g. 92" min="50" max="150" step="0.5">
-            <span class="unit">cm</span>
+            <span class="unit" id="hipsUnit">cm</span>
           </div>
         </div>
 
-        <div class="form-group">
-          <label>Height (cm)</label>
+        <div class="form-group" id="heightMetric">
+          <label>Height</label>
           <div class="input-wrapper">
             <input type="number" id="height" placeholder="e.g. 165" min="140" max="220" step="1">
             <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="form-group height-imperial" id="heightImperial">
+          <label>Height</label>
+          <div class="input-row">
+            <div class="input-wrapper">
+              <input type="number" id="heightFeet" placeholder="5" min="4" max="7" step="1">
+              <span class="unit">ft</span>
+            </div>
+            <div class="input-wrapper">
+              <input type="number" id="heightInches" placeholder="6" min="0" max="11" step="1">
+              <span class="unit">in</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" id="inseamMetric">
+          <label>Inseam / Leg Length <span class="optional">(auto-calculated)</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="inseam" placeholder="Estimated from height" min="60" max="100" step="1">
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="form-group height-imperial" id="inseamImperial">
+          <label>Inseam / Leg Length <span class="optional">(auto-calculated)</span></label>
+          <div class="input-wrapper">
+            <input type="number" id="inseamInches" placeholder="Estimated from height" min="24" max="40" step="1">
+            <span class="unit">in</span>
           </div>
         </div>
 
@@ -240,7 +348,7 @@
 
       <div id="savedView" class="measurements-saved">
         <h2>✓ Measurements Saved</h2>
-        <p>Browse ASOS, Zara, or Boohoo and we'll recommend your size!</p>
+        <p>Browse any shopping site and we'll recommend your size. No guessing from height and weight, we use your actual measurements to get it right.</p>
         
         <div class="measurement-display" id="displayMeasurements"></div>
 
